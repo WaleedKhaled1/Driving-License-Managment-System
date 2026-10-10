@@ -48,6 +48,7 @@ namespace DataAccessLayer1
                 }
 
                 EventLog.WriteEntry(SourceNameInEventViewer, ex.Message, EventLogEntryType.Error);
+            }
 
             finally
             {

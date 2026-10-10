@@ -137,83 +137,6 @@ namespace MyDVLD
             frmManageLocalDrivingLicenseApplication_Load(null, null);
         }
 
-        private void DisableOrEnable()
-        {
-            string statusText = dataGridView1.CurrentRow.Cells[6].Value.ToString();
-
-            if (Enum.TryParse(statusText, out clsApplications.enStatus status))
-            {
-                if (status == clsApplications.enStatus.Cancelled)
-                {
-                }
-                else if (status == clsApplications.enStatus.Completed)
-                {
-                    showApplicationDetailsToolStripMenuItem.Enabled = true;
-                    editToolStripMenuItem.Enabled = false;
-                    deleteApplicationToolStripMenuItem.Enabled = false;
-                    seToolStripMenuItem.Enabled = false;
-                    cancelApplicationToolStripMenuItem.Enabled = false;
-                    sechduleStreetTestToolStripMenuItem.Enabled = false;
-                    issueToolStripMenuItem.Enabled = false;
-                    showToolStripMenuItem.Enabled = true;
-                    showPersonToolStripMenuItem.Enabled = true;
-                }
-
-                else
-                {
-                    int testPasses = Convert.ToInt32(dataGridView1.CurrentRow.Cells[5].Value);
-
-                    //Shared Enabled
-                    showApplicationDetailsToolStripMenuItem.Enabled = true;
-                    editToolStripMenuItem.Enabled = true;
-                    deleteApplicationToolStripMenuItem.Enabled = true;
-                    cancelApplicationToolStripMenuItem.Enabled = true;
-                    showPersonToolStripMenuItem.Enabled = true;
-
-                    switch (testPasses)
-                    {
-                        case 0:
-                            seToolStripMenuItem.Enabled = true;
-                            sechduleVisionTestToolStripMenuItem.Enabled = true;
-                            sechduleWrittenToolStripMenuItem.Enabled = false;
-                            sechduleStreetTestToolStripMenuItem.Enabled = false;
-                            issueToolStripMenuItem.Enabled = false;
-                            showToolStripMenuItem.Enabled = false;
-                            break;
-
-                        case 1:
-                            seToolStripMenuItem.Enabled = true;
-                            sechduleVisionTestToolStripMenuItem.Enabled = false;
-                            sechduleWrittenToolStripMenuItem.Enabled = true;
-                            sechduleStreetTestToolStripMenuItem.Enabled = false;
-                            issueToolStripMenuItem.Enabled = false;
-                            showToolStripMenuItem.Enabled = false;
-                            break;
-
-                        case 2:
-                            seToolStripMenuItem.Enabled = true;
-                            sechduleVisionTestToolStripMenuItem.Enabled = false;
-                            sechduleWrittenToolStripMenuItem.Enabled = false;
-                            sechduleStreetTestToolStripMenuItem.Enabled = true;
-                            issueToolStripMenuItem.Enabled = false;
-                            showToolStripMenuItem.Enabled = false;
-                            break;
-
-                        case 3:
-                            seToolStripMenuItem.Enabled = false;
-                            sechduleVisionTestToolStripMenuItem.Enabled = false;
-                            sechduleWrittenToolStripMenuItem.Enabled = false;
-                            sechduleStreetTestToolStripMenuItem.Enabled = false;
-                            issueToolStripMenuItem.Enabled = true;
-                            showToolStripMenuItem.Enabled = false;
-                            break;
-                    }
-                }
-            }
-                
-
-            }
-
         private void _ScheduleTest(clsTestTypes.enTestType TestType)
         {
 
@@ -260,7 +183,7 @@ namespace MyDVLD
 
             cancelApplicationToolStripMenuItem.Enabled = (LocalDrivingLicenseApplication.ApplicationStatus == clsApplications.enStatus.New);
 
-            deleteApplicationToolStripMenuItem.Enabled =
+           deleteApplicationToolStripMenuItem.Enabled =
                 (LocalDrivingLicenseApplication.ApplicationStatus == clsApplications.enStatus.New);
 
             bool PassedVisionTest = LocalDrivingLicenseApplication.DoesPassTestType(clsTestTypes.enTestType.VisionTest); ;
@@ -337,6 +260,11 @@ namespace MyDVLD
         {
             frmShowLocalDrivingLicenseAppInfo frm = new frmShowLocalDrivingLicenseAppInfo((int)dataGridView1.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
+        }
+
+        private void seToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

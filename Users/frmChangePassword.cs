@@ -41,7 +41,9 @@ namespace MyDVLD
 
         private void txtCurrent_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtCurrent.Text) || txtCurrent.Text != obj.Password)
+            string Current = clsUsers.HashPassword(txtCurrent.Text);
+
+            if (string.IsNullOrWhiteSpace(txtCurrent.Text) ||Current != obj.Password)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtCurrent, "Current Password is wrong!");
@@ -55,7 +57,9 @@ namespace MyDVLD
 
         private void txtNew_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNew.Text)|| txtNew.Text==obj.Password)
+            string New=clsUsers.HashPassword(txtNew.Text);
+
+            if (string.IsNullOrWhiteSpace(txtNew.Text)|| New==obj.Password)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtNew, "New Password cannot be blank");
@@ -69,7 +73,7 @@ namespace MyDVLD
 
         private void txtConfirm_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNew.Text)||txtNew.Text!=txtConfirm.Text)
+            if (string.IsNullOrWhiteSpace(txtNew.Text)||txtConfirm.Text!=txtNew.Text)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtConfirm, "Confirm doesnt match with password!");
@@ -89,7 +93,7 @@ namespace MyDVLD
                 return;
             }
 
-            obj.Password = txtNew.Text;
+            obj.Password =clsUsers.HashPassword(txtNew.Text);
 
             if (obj.Save())
             {

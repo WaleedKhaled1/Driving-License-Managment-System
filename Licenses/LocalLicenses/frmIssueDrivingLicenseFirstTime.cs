@@ -16,8 +16,6 @@ namespace MyDVLD
        int _LocalDrivingLicenseID=-1;
         clsLocalDrivingLicense obj;
 
-      
-
         public frmIssueDrivingLicenseFirstTime(int localDrivingLicenseID)
         {
             InitializeComponent();
@@ -87,7 +85,9 @@ namespace MyDVLD
 
             if(licenses.Save())
             {
-                MessageBox.Show("License Issued Successfully with license ID = " + licenses.LicenseID,"Succeded",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+                MessageBox.Show("License Issued Successfully with license ID = " + licenses.LicenseID, "Succeded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Hello
                 obj.SetComplete();
             }
             else

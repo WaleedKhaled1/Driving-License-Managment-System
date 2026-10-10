@@ -107,6 +107,12 @@ namespace MyDVLD
             clsLicenses Locallicense = clsLicenses.FindLicenseInfoByLicenseID((int)dgvLocalLicensesHistory.CurrentRow.Cells[0].Value);
             clsLocalDrivingLicense LocalLicenseApp=clsLocalDrivingLicense.FindLocalDrivingLicenseInfoByAppID(Locallicense.ApplicationID);
 
+            if(LocalLicenseApp==null)
+            {
+                MessageBox.Show("Licese Was Not Found!", "Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             frmShowLicenseInfo frm = new frmShowLicenseInfo(LocalLicenseApp.LocalDrivingLicenseID);
             frm.ShowDialog();
         }

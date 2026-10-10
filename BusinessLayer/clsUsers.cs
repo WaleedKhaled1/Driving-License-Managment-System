@@ -1,5 +1,8 @@
 ﻿using DataAccessLayer1;
+using System;
 using System.Data;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace BusinessLayer
 {   
@@ -85,6 +88,19 @@ namespace BusinessLayer
                 return null;
         }
 
+        public static string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                // Compute the hash value from the UTF-8 encoded input string
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+
+
+                // Convert the byte array to a lowercase hexadecimal string
+                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+            }
+        }
+
         public  bool UpdateUser()
         {
             return clsUsersData.UpdateUser(this.UserID, this.UserName, this.Password,this. IsActive);
@@ -94,6 +110,7 @@ namespace BusinessLayer
         {
             return clsUsersData.DeleteUser(UserID);
         }
+
 
         public bool Save()
         {

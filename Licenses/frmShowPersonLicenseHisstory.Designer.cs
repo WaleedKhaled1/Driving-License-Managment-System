@@ -76,6 +76,7 @@
             this.ctrlDrivingLicenses1.Name = "ctrlDrivingLicenses1";
             this.ctrlDrivingLicenses1.Size = new System.Drawing.Size(1134, 342);
             this.ctrlDrivingLicenses1.TabIndex = 3;
+            this.ctrlDrivingLicenses1.Load += new System.EventHandler(this.ctrlDrivingLicenses1_Load);
             // 
             // ctrlPersonInfoWithFilter1
             // 

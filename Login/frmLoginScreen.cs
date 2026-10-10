@@ -11,11 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.Security.Policy;
 
 namespace MyDVLD
 {
     public partial class frmLoginScreen : Form
     {
+        string KeyPath = @"HKEY_CURRENT_USER\SOFTWARE\LOGIN";
+        string valueName = "VALUE NAME";
         public frmLoginScreen()
         { 
             InitializeComponent();
@@ -25,12 +28,11 @@ namespace MyDVLD
         {
             bool IsActive = true;
 
-            string KeyPath = @"HKEY_CURRENT_USER\SOFTWARE\LOGIN";
-            string valueName = "VALUE NAME";
-
             string SourceNameInEventViewer = "Login";
 
-            if (clsUsers.IsUserExistAndActive(txtUser.Text, txtPass.Text, ref IsActive))
+            string Password = clsUsers.HashPassword(txtPass.Text);
+
+            if (clsUsers.IsUserExistAndActive(txtUser.Text, Password, ref IsActive))
             {
                 if (IsActive)
                 {
@@ -53,7 +55,7 @@ namespace MyDVLD
                         }
                    
                     }
-                    clsUsers obj = clsUsers.FindUserByUserNameAndPassword(txtUser.Text, txtPass.Text);
+                    clsUsers obj = clsUsers.FindUserByUserNameAndPassword(txtUser.Text, Password);
                   
                     ClassGlobal1.CurrentUser = obj;
 

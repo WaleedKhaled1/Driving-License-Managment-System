@@ -55,5 +55,10 @@ namespace MyDVLD
         {
             this.Close();
         }
+
+        private void ctrlDrivingLicenses1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

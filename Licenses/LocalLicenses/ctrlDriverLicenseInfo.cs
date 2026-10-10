@@ -31,8 +31,22 @@ namespace MyDVLD
 
         public void LoadData(int LocalDrivingLicenseAppID)
         {
-            clsLocalDrivingLicense  obj = clsLocalDrivingLicense.FindLocalDrivingLicenseInfoByID(LocalDrivingLicenseAppID);
+            clsLocalDrivingLicense obj = clsLocalDrivingLicense.FindLocalDrivingLicenseInfoByID(LocalDrivingLicenseAppID);
+
+                if(obj==null)
+            {
+                MessageBox.Show("LocalDrivingLicenseAppID was not found!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
              licenses = clsLicenses.FindLicenseInfoByAppID(obj.ApplicationID);
+
+            if (licenses==null)
+            {
+                MessageBox.Show("License was not found!", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             _LicenseID=licenses.LicenseID;
 
 

@@ -164,7 +164,7 @@ namespace DataAccessLayer1
 
             SqlConnection connection = new SqlConnection(StringDataAccess.connection);
 
-            string query = "Update Applications set ApplicationStatus=@Status,set LastStatusDate=@now where ApplicationID=@ApplicationID";
+            string query = "UPDATE Applications SET ApplicationStatus = @Status, LastStatusDate = @now WHERE ApplicationID = @ApplicationID";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -214,24 +214,9 @@ namespace DataAccessLayer1
 
 
             int result = 0;
-            try
-            {
-                connection.Open();
+             connection.Open();
                 result = cmd.ExecuteNonQuery();
-            }
-
-            catch (Exception ex)
-            {
-                if (!EventLog.SourceExists(SourceNameInEventViewer))
-                {
-                    EventLog.CreateEventSource(SourceNameInEventViewer, "Application");
-                }
-
-                EventLog.WriteEntry(SourceNameInEventViewer, ex.Message, EventLogEntryType.Error);
-            }
-
-            finally
-            { connection.Close(); }
+            
 
             return (result != 0);
         }

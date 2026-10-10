@@ -185,6 +185,7 @@
             this.seToolStripMenuItem.Name = "seToolStripMenuItem";
             this.seToolStripMenuItem.Size = new System.Drawing.Size(292, 26);
             this.seToolStripMenuItem.Text = "Sechdule Tests";
+            this.seToolStripMenuItem.Click += new System.EventHandler(this.seToolStripMenuItem_Click);
             // 
             // sechduleVisionTestToolStripMenuItem
             // 

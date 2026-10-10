@@ -53,3 +53,4 @@ C:\Users\wk320\source\repos\MyDVLD\obj\Debug\MyDVLD.frmManageDetainedLicenses.re
 C:\Users\wk320\source\repos\MyDVLD\obj\Debug\MyDVLD.frmShowLocalDrivingLicenseAppInfo.resources
 C:\Users\wk320\source\repos\MyDVLD\obj\Debug\MyDVLD.frmShowLicenseInfo.resources
 C:\Users\wk320\source\repos\MyDVLD\obj\Debug\MyDVLD.frmShowPersonInfo.resources
+C:\Users\wk320\source\repos\MyDVLD\obj\Debug\MyDVLD.exe.config

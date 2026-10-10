@@ -122,7 +122,7 @@ namespace MyDVLD
 
         public void LoadData(int PersonID)
         {
-            txtFilter.Text=PersonID.ToString();
+            txtFilter.Text=clsPeople.FindByID(PersonID).NationalNo.ToString();
             ctrlpersoninfo1.LoadPersonInfoByID((PersonID));
         }
 

@@ -169,7 +169,7 @@ namespace MyDVLD
 
             _User.PersonID = ctrlPersonInfoWithFilter1.PersonID;
             _User.UserName = txtName.Text.Trim();
-            _User.Password = txtPass.Text.Trim();
+            _User.Password =clsUsers.HashPassword(txtPass.Text.Trim());
             _User.IsActive = checkBox1.Checked;
 
             if (_User.Save())
